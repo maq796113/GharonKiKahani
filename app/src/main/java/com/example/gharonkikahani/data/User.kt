@@ -1,7 +1,8 @@
 package com.example.gharonkikahani.data
 
 data class User(
-    val userId: String = "",
-    val userEmail: String = "",
-    val userName: String = ""
+    val userId: String = "null",
+    val userEmail: String = "null",
+    val userName: String = "null",
+    val profilePictureUrl: String = "null"
 )

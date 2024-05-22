@@ -22,17 +22,18 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import com.example.gharonkikahani.R
 import com.example.gharonkikahani.ui.theme.LightYellow
+import com.example.gharonkikahani.uiStates.SignInUiStates
 
 @Composable
 fun SignInScreen(
-    state: SignInState,
+    state: SignInUiStates,
 //    saveSession: () -> Unit,
 //    onEvent: (UserEvent) -> Unit,
     onSignInClick: () -> Unit
 ) {
     val context = LocalContext.current
-    LaunchedEffect(key1 = state.signInError) {
-        state.signInError?.let { error ->
+    LaunchedEffect(key1 = state.signInErrorMessage) {
+        state.signInErrorMessage?.let { error ->
             Toast.makeText(
                 context,
                 error,
@@ -41,7 +42,7 @@ fun SignInScreen(
         }
     }
 
-    Surface(color = LightYellow) {
+    GradientBackg(color = LightYellow) {
         LazyColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
             contentPadding = PaddingValues(30.dp)
@@ -49,9 +50,11 @@ fun SignInScreen(
 
 
             item {
+
                 Button(
                     onClick =
                 )
+
                 {
                     Text(text = "Sign in")
                 }
