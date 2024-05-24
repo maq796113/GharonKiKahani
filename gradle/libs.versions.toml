@@ -26,7 +26,7 @@ composeNavigation = "2.8.0-alpha08"
 serialization = "1.6.3"
 splashscreen = "1.2.0-alpha01"
 googleFonts = "1.7.0-beta01"
-
+coil = "2.6.0"
 material-icons-core = "1.7.0-alpha02"
 material-icons-extended = "1.7.0-alpha02"
 
@@ -61,7 +61,7 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltA
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
-coil-compose = "io.coil-kt:coil-compose:2.6.0"
+coil-compose = {module = "io.coil-kt:coil-compose", version.ref = "coil"}
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }

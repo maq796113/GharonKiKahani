@@ -11,10 +11,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.bodyanalysistool.uistates.SignUpUIStates
 import com.example.gharonkikahani.data.AuthResult
 import com.example.gharonkikahani.firebase.auth.AuthRepository
+import com.example.gharonkikahani.presentation.sign_in.SignInState
 import com.example.gharonkikahani.uiStates.EmailStates
 import com.example.gharonkikahani.uiStates.NameStates
 import com.example.gharonkikahani.uiStates.PasswordStates
-import com.example.gharonkikahani.uiStates.SignInUiStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,7 +29,7 @@ class AuthViewModel @Inject constructor(
 //    private val firestoreRepository: FirestoreRepository
 ): ViewModel() {
 
-    var signInState by mutableStateOf(SignInUiStates())
+    var signInState by mutableStateOf(SignInState())
         private set
 
 
@@ -99,14 +99,14 @@ class AuthViewModel @Inject constructor(
 
     suspend fun loginGoogleIntentSender(): IntentSender? {
         signInState = signInState.copy(
-            isSigningIn = true
+            isLoggingIn = true
         )
         return authRepository.loginGoogleIntentSender()
     }
 
     fun loginUsingEmailPassword(email: String, password: String){
         signInState = signInState.copy(
-            isSigningIn = true
+            isLoggingIn = true
         )
 
         viewModelScope.launch {
@@ -130,7 +130,7 @@ class AuthViewModel @Inject constructor(
 
         signInState = signInState.copy(
             isSignInSuccessful = result.user != null,
-            signInErrorMessage = result.errorMessage
+            signInError = result.errorMessage
         )
         if(result.user != null){
             Log.d(TAG, "user is not null")
@@ -138,7 +138,7 @@ class AuthViewModel @Inject constructor(
         }
         if(result.errorMessage != null){
             signInState = signInState.copy(
-                isSigningIn = false
+                isLoggingIn = false
             )
         }
     }
@@ -164,7 +164,7 @@ class AuthViewModel @Inject constructor(
 
 
     fun resetSignInState() {
-        signInState = SignInUiStates()
+        signInState = SignInState()
     }
 
     fun resetSignUpState() {
@@ -174,6 +174,8 @@ class AuthViewModel @Inject constructor(
     companion object{
         private const val TAG = "Authentication ViewModel"
     }
+
+
 
 
 

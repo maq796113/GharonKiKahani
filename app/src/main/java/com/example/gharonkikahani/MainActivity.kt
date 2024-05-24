@@ -1,5 +1,6 @@
 package com.example.gharonkikahani
 
+import SignInAction
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -29,6 +30,7 @@ import com.example.gharonkikahani.viewmodel.SplashScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -80,9 +82,10 @@ class MainActivity : ComponentActivity() {
                             )
 
                         }
+
+
+
                         composable<SignInScreen>{
-
-
 
                             LaunchedEffect(key1 = Unit) {
                                 if(authViewModel.getSignedInUser() != null){
@@ -107,34 +110,44 @@ class MainActivity : ComponentActivity() {
 
                             SignInScreen(
                                 state = state,
-                                onSignInClick = {
-                                    lifecycleScope.launch {
-                                        val signInIntentSender = authViewModel.loginGoogleIntentSender()
-                                        launcher.launch(
-                                            IntentSenderRequest.Builder(
-                                                signInIntentSender ?: return@launch
-                                            ).build()
-                                        )
+                                onAction = {
+                                    it.run {
+                                        when(this) {
+                                            is SignInAction.OnGoogleLoginClick -> {
+                                                lifecycleScope.launch {
+                                                    val signInIntentSender = authViewModel.loginGoogleIntentSender()
+                                                    launcher.launch(
+                                                        IntentSenderRequest.Builder(
+                                                            signInIntentSender ?: return@launch
+                                                            ).build()
+                                                    )
+                                                }
+                                            }
+                                            else -> {}
+                                        }
                                     }
+
                                 },
 
                             )
                         }
                         composable<DashboardScreen>{
-                            ProfileScreen(
-                                userData = authViewModel.getSignedInUser(),
-                                onSignOut = {
-                                    lifecycleScope.launch {
-                                        googleAuthUiClient.signOut()
-                                        Toast.makeText(
-                                            applicationContext,
-                                            "Signed Out",
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                            authViewModel.getSignedInUser()?.let { user ->
+                                ProfileScreen(
+                                    userData = user,
+                                    onSignOut = {
+                                        lifecycleScope.launch {
+                                            authViewModel.logout()
+                                            Toast.makeText(
+                                                applicationContext,
+                                                "Signed Out",
+                                                Toast.LENGTH_LONG
+                                            ).show()
 
-                                        navController.popBackStack()
-                                    }
-                                })
+                                            navController.popBackStack()
+                                        }
+                                    })
+                            }
                         }
                     }
                 }
