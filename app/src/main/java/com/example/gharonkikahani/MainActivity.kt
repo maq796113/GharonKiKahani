@@ -140,7 +140,7 @@ class MainActivity : ComponentActivity() {
                                             authViewModel.logout()
                                             Toast.makeText(
                                                 applicationContext,
-                                                "Signed Out",
+                                                "Signed Out Hello",
                                                 Toast.LENGTH_LONG
                                             ).show()
 
