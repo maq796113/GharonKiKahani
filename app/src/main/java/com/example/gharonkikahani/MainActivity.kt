@@ -21,6 +21,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.gharonkikahani.presentation.add_items.AddItemScreen
+import com.example.gharonkikahani.presentation.choose.ChooseRecipeInputScreen
 import com.example.gharonkikahani.presentation.get_started.GetStartedScreen
 import com.example.gharonkikahani.presentation.profile.ProfileScreen
 import com.example.gharonkikahani.presentation.sign_in.SignInScreen
@@ -149,6 +151,20 @@ class MainActivity : ComponentActivity() {
                                     })
                             }
                         }
+                        composable<ChooseRecipeInput> {
+                            ChooseRecipeInputScreen(
+                                onManualInput = {
+                                    navController.navigate(AddItemScreen)
+                                },
+                                onCaptureInput = {
+                                    // Handle capture input action
+                                    Toast.makeText(applicationContext, "Capture Input Selected", Toast.LENGTH_SHORT).show()
+                                }
+                            )
+                        }
+                        composable<AddItemScreen> {
+                            AddItemScreen(navController)
+                        }
                     }
                 }
             }
@@ -168,3 +184,8 @@ object GetStartedScreen
 @Serializable
 object RecipeScreen
 
+@Serializable
+object ChooseRecipeInput
+
+@Serializable
+object AddItemScreen;
