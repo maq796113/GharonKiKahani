@@ -2,7 +2,9 @@ package com.example.gharonkikahani.presentation.recipe
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +32,8 @@ fun RecipeScreen(
             title = "Results",
             modifier = Modifier.padding(top = 10.dp)
         )
+        
+        Spacer(modifier = Modifier.height(25.dp))
         if (session.geminiAIUiState?.isSuccessful == true) {
             ElevatedCard(
                 modifier = Modifier
@@ -38,9 +42,9 @@ fun RecipeScreen(
                 shape = MaterialTheme.shapes.medium
             ) {
 
-                session.geminiAIUiState.response?.let {
+                session.geminiAIUiState.response?.let {response ->
                     MarkdownText(
-                        markdown = it,
+                        markdown = response,
                         truncateOnTextOverflow = true,
                         modifier = Modifier.align(
                             alignment = Alignment.CenterHorizontally

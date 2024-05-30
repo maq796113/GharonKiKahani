@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -41,8 +43,6 @@ import com.example.gharonkikahani.ui.theme.quicksandFontFamily
 @Composable
 fun SignInScreen(
     state: SignInState,
-//    saveSession: () -> Unit,
-//    onEvent: (UserEvent) -> Unit,
     onAction: (SignInAction) -> Unit,
     onFieldInput: () -> Unit
 ) {
@@ -116,13 +116,23 @@ fun SignInScreen(
 
             ElevatedButton(
                 onClick = {
-                    println("hello $state")
                     onAction(SignInAction.OnSimpleLoginClick)
                 },
                 modifier = buttonSize
                 ) {
+
                 Text(text = "Login")
+                if (state.isLoggingIn) {
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .align(
+                                Alignment.CenterVertically
+                            )
+                            .size(5.dp)
+                    )
+                }
             }
+
 
             Spacer(modifier = Modifier.height(25.dp))
 

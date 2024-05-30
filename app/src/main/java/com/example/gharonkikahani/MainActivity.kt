@@ -113,6 +113,7 @@ class MainActivity : ComponentActivity() {
                             }
 
 
+
                             SignUpScreen(
                                 signUpState = signUpState,
                                 onAction = {
@@ -126,6 +127,7 @@ class MainActivity : ComponentActivity() {
                                                 email=signUpState.email.text.toString(),
                                                 password=signUpState.password.text.toString()
                                             )
+
 
                                             if (signUpState.isSignUpSuccessful) {
                                                 authViewModel.saveUserSession()
