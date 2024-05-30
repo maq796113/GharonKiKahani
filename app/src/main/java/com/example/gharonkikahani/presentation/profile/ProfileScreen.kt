@@ -26,7 +26,8 @@ import com.example.gharonkikahani.data.User
 fun ProfileScreen(
     userData: User,
     onSignOut: () -> Unit,
-    savedProfileUri: String?
+    savedProfileUri: String?,
+    onNavigateToMenu: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -53,6 +54,10 @@ fun ProfileScreen(
             )
             Spacer(modifier = Modifier.height(16.dp))
         }
+        Button(onClick = onNavigateToMenu) {
+            Text(text = "Let's Go")
+        }
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = onSignOut) {
             Text(text = "Sign out")
         }

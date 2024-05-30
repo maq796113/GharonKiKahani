@@ -1,5 +1,6 @@
 package com.example.gharonkikahani.presentation.menu
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -16,7 +17,8 @@ fun MenuScreen(
     onCameraInput: () -> Unit,
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         Button(onClick = onManualInput) {
             Text("Manual")

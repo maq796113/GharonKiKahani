@@ -60,7 +60,7 @@ fun RuniqueTextField(
     modifier: Modifier = Modifier,
     error: String? = null,
     keyboardType: KeyboardType = KeyboardType.Text,
-    additionalInfo: String? = null,
+    additionalInfo: String? = null
 ) {
     var isFocused by rememberSaveable {
         mutableStateOf(false)
@@ -181,6 +181,6 @@ fun RuniqueTextFieldPreview() {
         endIcon = null,
         hint = "Hint",
         title = "Title",
-        error = null,
+        error = null
     )
 }

@@ -193,6 +193,8 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
 
+
+
                             SignInScreen(
                                 state = signInState,
                                 onAction = {
@@ -245,7 +247,7 @@ class MainActivity : ComponentActivity() {
 
 
                                 },
-
+                                onFieldInput = {}
                             )
                         }
                         composable<DashboardScreen>{
@@ -268,7 +270,10 @@ class MainActivity : ComponentActivity() {
                                             navController.popBackStack()
                                         }
                                     },
-                                    savedProfileUri = getSessionViewModel.session?.user?.profilePictureUrl
+                                    savedProfileUri = getSessionViewModel.session?.user?.profilePictureUrl,
+                                    onNavigateToMenu = {
+                                        navController.navigate(MenuScreen)
+                                    }
                                 )
 
                             }

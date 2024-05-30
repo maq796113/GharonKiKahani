@@ -43,7 +43,8 @@ fun SignInScreen(
     state: SignInState,
 //    saveSession: () -> Unit,
 //    onEvent: (UserEvent) -> Unit,
-    onAction: (SignInAction) -> Unit
+    onAction: (SignInAction) -> Unit,
+    onFieldInput: () -> Unit
 ) {
     val buttonSize = Modifier
         .height(35.dp)
@@ -58,6 +59,9 @@ fun SignInScreen(
             ).show()
         }
     }
+
+
+
 
     GradientBackground(
         modifier = Modifier
@@ -81,6 +85,7 @@ fun SignInScreen(
 
             Spacer(modifier = Modifier.height(48.dp))
 
+
             RuniqueTextField(
                 state = state.email,
                 startIcon = EmailIcon,
@@ -89,7 +94,7 @@ fun SignInScreen(
                 hint = stringResource(id = R.string.sample_email),
                 title = stringResource(id = R.string.email),
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
             )
             Spacer(modifier = Modifier.height(39.dp))
 
@@ -111,6 +116,7 @@ fun SignInScreen(
 
             ElevatedButton(
                 onClick = {
+                    println("hello $state")
                     onAction(SignInAction.OnSimpleLoginClick)
                 },
                 modifier = buttonSize
@@ -208,6 +214,7 @@ fun SignInScreen(
 fun SignInScreenPreview() {
     SignInScreen(
         state = SignInState(),
-        onAction = {}
+        onAction = {},
+        onFieldInput = {}
     )
 }

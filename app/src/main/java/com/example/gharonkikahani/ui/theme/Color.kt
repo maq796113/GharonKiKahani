@@ -37,4 +37,4 @@ val Yellow = Color(0xFFFFF100)
 val Orange = Color(0xFFFFA500)
 val Red = Color(0xFFF10000)
 
-val rainbowColors: List<Color> = listOf(Violet, Blue, Yellow, Orange, RuniqueGreen, Red)
+val rainbowColors: List<Color> = listOf(Violet, Blue, RuniqueGreen, Red)
