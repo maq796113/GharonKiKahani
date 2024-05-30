@@ -108,6 +108,13 @@ dependencies {
     implementation(libs.ui.text.google.fonts)
 
     implementation(libs.coil.compose)
+
+
+    //CameraX
+    implementation(libs.bundles.camera)
+
+    //Markdown
+    implementation(libs.jeziellag.compose.markdown)
 }
 
 

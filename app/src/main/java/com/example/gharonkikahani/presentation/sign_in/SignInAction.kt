@@ -5,7 +5,9 @@ sealed interface SignInAction {
     data object OnGoogleLoginClick: SignInAction
 
     data object OnFacebookLoginClick: SignInAction
-    data object OnRegisterClick: SignInAction
+
+    data object OnSignUpClick: SignInAction
+
 
 
 }

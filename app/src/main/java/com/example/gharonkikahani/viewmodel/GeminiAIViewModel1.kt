@@ -7,6 +7,7 @@ import com.example.gharonkikahani.BuildConfig
 
 import com.example.gharonkikahani.session.Session
 import com.example.gharonkikahani.session.SessionCache
+import com.example.gharonkikahani.states.BitmapState
 import com.example.gharonkikahani.uiStates.GeminiAIUiState
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
@@ -30,6 +31,9 @@ class GeminiAIViewModel1 @Inject constructor(
     private val _uiState: MutableStateFlow<GeminiAIUiState> = MutableStateFlow(GeminiAIUiState())
     val uiState = _uiState.asStateFlow()
 
+    private val _bitmapState: MutableStateFlow<BitmapState> = MutableStateFlow(BitmapState())
+    val bitmapState = _bitmapState.asStateFlow()
+
     private var generativeModelImg: GenerativeModel
     private var generativeModelTxt: GenerativeModel
 
@@ -50,7 +54,8 @@ class GeminiAIViewModel1 @Inject constructor(
     fun saveSession() {
         sessionCache.saveSession(
             session = Session(
-                geminiAIUiState = uiState.value
+                geminiAIUiState = uiState.value,
+                user = null
             )
         )
     }
@@ -61,7 +66,7 @@ class GeminiAIViewModel1 @Inject constructor(
         }
 
         generativeModelImg = GenerativeModel(
-            modelName = "gemini-pro-vision",
+            modelName = "gemini-1.5-flash-latest",
             apiKey = BuildConfig.apiKey,
             generationConfig = config
         )
@@ -69,6 +74,11 @@ class GeminiAIViewModel1 @Inject constructor(
             modelName = "gemini-pro",
             apiKey = BuildConfig.apiKey,
             generationConfig = config
+        )
+    }
+    fun getSelectedBitmap(bitmapUri: String)  {
+        _bitmapState.value = bitmapState.value.copy(
+            bitmapUri = bitmapUri
         )
     }
     fun initializeLoading() {

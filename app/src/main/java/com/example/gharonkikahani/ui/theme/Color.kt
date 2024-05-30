@@ -11,6 +11,7 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val LightYellow = Color(0xFFFFFACB)
+val Peach = Color(0xFFFCD181)
 
 val WeirdOrange = Color(0xFFEC7E0F)
 
@@ -25,3 +26,15 @@ val RuniqueDarkGray = Color(0xFF232624)
 val RuniqueWhite = Color(0xFFFAFAFA)
 val RuniqueDarkRed = Color(0xFFBB3D3D)
 val RuniqueDarkRed5 = Color(0x0DBB3D3D)
+
+val BlackForTextFields = Color(0xFF0A0A0A)
+
+val BlueButton = Color(0xFF1877F2)
+
+val Violet = Color(0xFF8F00FF)
+val Blue = Color(0xFF1A1AFF)
+val Yellow = Color(0xFFFFF100)
+val Orange = Color(0xFFFFA500)
+val Red = Color(0xFFF10000)
+
+val rainbowColors: List<Color> = listOf(Violet, Blue, Yellow, Orange, RuniqueGreen, Red)

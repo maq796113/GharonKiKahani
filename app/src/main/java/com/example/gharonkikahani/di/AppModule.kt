@@ -33,6 +33,7 @@ object AppModule {
     }
 
 
+
 //    @Provides
 //    @Singleton
 //    fun provideFirestoreRepository(impl: FirestoreRepositoryImpl): FirestoreRepository = impl
@@ -42,9 +43,6 @@ object AppModule {
     @Singleton
     fun provideAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
 
-    @Provides
-    @Singleton
-    fun provideContext(@ApplicationContext context: Context): Context = context.applicationContext
 
     @Provides
     @Singleton

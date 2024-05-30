@@ -1,8 +1,5 @@
-@file:OptIn(ExperimentalFoundationApi::class)
+package com.example.gharonkikahani.ui.components
 
-package com.plcoding.composescreenshottesting.ui.login.components
-
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -33,7 +30,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.gharonkikahani.ui.theme.BlackForTextFields
 import com.example.gharonkikahani.ui.theme.EyeClosedIcon
 import com.example.gharonkikahani.ui.theme.EyeOpenedIcon
 import com.example.gharonkikahani.ui.theme.LockIcon
@@ -43,6 +42,7 @@ import com.example.gharonkikahani.ui.theme.RuniqueGray40
 import com.example.gharonkikahani.ui.theme.RuniqueGreen
 import com.example.gharonkikahani.ui.theme.RuniqueGreen5
 import com.example.gharonkikahani.ui.theme.RuniqueWhite
+import com.example.gharonkikahani.ui.theme.quicksandFontFamily
 
 
 @Composable
@@ -67,7 +67,9 @@ fun RuniquePasswordTextField(
         ) {
             Text(
                 text = title,
-                color = RuniqueGray
+                color = BlackForTextFields,
+                fontFamily = quicksandFontFamily,
+                fontWeight = FontWeight.Bold
             )
         }
         Spacer(modifier = Modifier.height(4.dp))

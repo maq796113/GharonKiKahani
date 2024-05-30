@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -15,8 +16,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.gharonkikahani.ui.theme.RuniqueBlack
+import com.example.gharonkikahani.ui.theme.LightYellow
+import com.example.gharonkikahani.ui.theme.Peach
 
 
 @Composable
@@ -45,7 +48,6 @@ fun GradientBackground(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(RuniqueBlack)
     ) {
         Box(
             modifier = modifier
@@ -58,8 +60,9 @@ fun GradientBackground(
                 .background(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            if (isAtLeastAndroid12) primaryColor else primaryColor.copy(alpha = 0.3f),
-                            RuniqueBlack
+                            LightYellow,
+                            if (isAtLeastAndroid12) primaryColor else primaryColor.copy(alpha = 0.5f),
+                            Peach
                         ),
                         center = Offset(
                             x = screenWidthPx / 2f,
@@ -82,5 +85,13 @@ fun GradientBackground(
         ) {
             content()
         }
+    }
+}
+
+@Preview
+@Composable
+fun GradientBackgroundPreview() {
+    GradientBackground {
+        Text(text = "Hello")
     }
 }

@@ -25,7 +25,8 @@ import com.example.gharonkikahani.data.User
 @Composable
 fun ProfileScreen(
     userData: User,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    savedProfileUri: String?
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -33,7 +34,8 @@ fun ProfileScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if(userData.profilePictureUrl != "null") {
-            AsyncImage(model = userData.profilePictureUrl,
+            AsyncImage(
+                model = userData.profilePictureUrl ?: savedProfileUri,
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(150.dp)
@@ -42,7 +44,7 @@ fun ProfileScreen(
             )
             Spacer(modifier = Modifier.height(16.dp))
         }
-        if(userData.userName != "null"){
+        if(userData.userName != null){
             Text(
                 text = userData.userName,
                 textAlign = TextAlign.Center,

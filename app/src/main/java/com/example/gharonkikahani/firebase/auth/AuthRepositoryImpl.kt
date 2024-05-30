@@ -1,10 +1,9 @@
 package com.example.gharonkikahani.firebase.auth
 
-import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.util.Log
-import com.example.gharonkikahani.R
+import com.example.gharonkikahani.BuildConfig
 import com.example.gharonkikahani.data.AuthResult
 import com.example.gharonkikahani.data.User
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
@@ -18,17 +17,16 @@ import javax.inject.Inject
 import kotlin.coroutines.cancellation.CancellationException
 
 class AuthRepositoryImpl @Inject constructor(
-    private val context: Context,
     private val oneTapClient: SignInClient,
 ) : AuthRepository {
     private val auth = Firebase.auth
 
-    override val currentUser: User?
-        get() = auth.currentUser?.run {
+    override fun currentUser(): User? = auth.currentUser?.run {
             User(
                 userId = uid,
-                userEmail = email!!,
-                userName = displayName!!
+                userEmail = email,
+                userName = displayName,
+                profilePictureUrl = photoUrl?.toString()
             )
         }
 
@@ -135,7 +133,7 @@ class AuthRepositoryImpl @Inject constructor(
                 BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                     .setSupported(true)
                     .setFilterByAuthorizedAccounts(false)
-                    .setServerClientId(context.getString(R.string.web_client_id))
+                    .setServerClientId(BuildConfig.webClientID)
                     .build()
             )
             .setAutoSelectEnabled(true)
