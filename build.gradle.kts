@@ -7,4 +7,5 @@ plugins {
     alias(libs.plugins.daggerHiltAndroid) apply false
     alias(libs.plugins.mapsplatform.secrets) apply false
     alias(libs.plugins.kotlin.serialization) apply false
+//    alias(libs.plugins.googleRelay) apply false
 }

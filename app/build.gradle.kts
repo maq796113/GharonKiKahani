@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.daggerHiltAndroid)
     alias(libs.plugins.mapsplatform.secrets)
     alias(libs.plugins.kotlin.serialization)
+//    alias(libs.plugins.googleRelay)
 }
 
 android {
@@ -115,6 +116,9 @@ dependencies {
 
     //Markdown
     implementation(libs.jeziellag.compose.markdown)
+
+    implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
+    implementation(libs.androidx.compose.material3.adaptive.navigation)
 }
 
 

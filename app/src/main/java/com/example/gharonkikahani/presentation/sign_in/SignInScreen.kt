@@ -43,8 +43,7 @@ import com.example.gharonkikahani.ui.theme.quicksandFontFamily
 @Composable
 fun SignInScreen(
     state: SignInState,
-    onAction: (SignInAction) -> Unit,
-    onFieldInput: () -> Unit
+    onAction: (SignInAction) -> Unit
 ) {
     val buttonSize = Modifier
         .height(35.dp)
@@ -224,7 +223,6 @@ fun SignInScreen(
 fun SignInScreenPreview() {
     SignInScreen(
         state = SignInState(),
-        onAction = {},
-        onFieldInput = {}
+        onAction = {}
     )
 }

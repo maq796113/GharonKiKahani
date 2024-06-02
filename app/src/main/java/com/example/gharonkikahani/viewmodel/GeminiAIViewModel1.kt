@@ -1,6 +1,7 @@
 package com.example.gharonkikahani.viewmodel
 
 import android.graphics.Bitmap
+import android.media.Image
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gharonkikahani.BuildConfig
@@ -136,13 +137,14 @@ class GeminiAIViewModel1 @Inject constructor(
                         prompt
                     )
                 }
-                var output = ""
+                var outputText = ""
+                val image: Image? = null
                 generativeModelTxt.generateContentStream(content).collect {
-                    output += it.text
+                    outputText += it.text
                     withContext(Dispatchers.Main.immediate) {
                         _uiState.value = uiState.value.copy(
                             isLoading = false,
-                            response = output,
+                            response = outputText,
                             isSuccessful = true
                         )
 
@@ -157,5 +159,10 @@ class GeminiAIViewModel1 @Inject constructor(
                 }
             }
         }
+    }
+
+
+    private fun structureResponse(response: String): Triple<String, String, String> {
+        TODO("Structure the response in three parts, ingredients, method and time")
     }
 }

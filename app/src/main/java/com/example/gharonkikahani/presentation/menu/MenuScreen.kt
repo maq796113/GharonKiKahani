@@ -16,6 +16,7 @@ fun MenuScreen(
     onManualInput: () -> Unit,
     onCameraInput: () -> Unit,
 ) {
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -29,6 +30,13 @@ fun MenuScreen(
         Button(onClick = onCameraInput) {
             Text("Camera")
         }
+
+//        CaptureYourIngredients(
+//            onOpenCamera = onCameraInput,
+//            modifier = Modifier
+//                .rowWeight(1.0f)
+//                .columnWeight(1.0f)
+//        )
 
     }
 

@@ -30,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.gharonkikahani.presentation.camera.CameraScreen
 import com.example.gharonkikahani.presentation.get_started.GetStartedScreen
@@ -92,6 +93,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     val navController = rememberNavController()
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
                     NavHost(
                         navController = navController,
                         startDestination = GetStartedScreen
@@ -164,6 +166,8 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate(DashboardScreen)
                                 }
                             }
+
+
 
 
 
@@ -248,8 +252,7 @@ class MainActivity : ComponentActivity() {
                                     }
 
 
-                                },
-                                onFieldInput = {}
+                                }
                             )
                         }
                         composable<DashboardScreen>{
